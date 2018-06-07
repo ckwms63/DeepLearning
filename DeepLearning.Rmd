@@ -1,0 +1,57 @@
+---
+title: "Basic Concept of Deep Learning"
+author: "Caroline K. Williams"
+date: "June 6, 2018"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+
+## Perceptron
+
+<img src="image/intro1.jpg" style="padding:.5em;border:solid;margin-bottom:10px;margin-right:10px;float:left;width:400px"/>**Perceptron**: a single artificial neuron, belongs to the category of supervised learning algorithms (single-layer binary linear classifiers)
+
+<img src="image/intro2.jpg" style="padding:.5em;border:solid;margin-bottom:10px;margin-right:10px;float:left;width:400px"/>
+$x_i$ = input
+<br>$w_i$ = weight factor
+<br>$b$ = bias term
+<br>$f$ = activation function
+
+
+## Activation Functions
+A function used to transform the activation level of a unit (neuron) into an output signal
+
+**Common Activation Functions**:
+<div style="font-size:21px">
+<br><img src="image/ActivationFunction.jpg" style="float:left;margin-right:1em;width:50%"/>
+<br><u>**Identity**</u>: $f(y) = y$
+<br><br><u>**Sigmoid**</u>:
+<br>- logistic function: $f(y) = \frac{1}{1+e^{-y}}$
+<br>- hyperbolic tangent: $f(y) = \tanh y$
+<br><br><u>**Rectified linear (ReLU)**</u>: $f(y) = \max (0,y)$
+</div>
+
+## Sigmoid Logistic Function
+
+General Linear Regression model: $y = \sum_{i=0}^{n} w_ix_i$
+
+Probability: $0 \leq p \leq 1$ 
+<br>Logistic Regression model: $p(y|x) = \frac{e^y}{e^y+1}=\frac{1}{1+e^{-y}}$
+
+<center>
+![](image/logreg1.jpg)
+</center>
+
+
+## Derivative of sigmoid function 
+<br>$p' = \frac{dp}{dy} =\frac{d}{dy}\frac{1}{1+e^{-y}} = \frac{d}{dy} a^{-1}$ with $a = 1+e^{-y}$
+
+$\frac{da}{dy} =-e^{-y}$
+<br>$\frac{dp}{da} =\frac{d}{da} a^{-1} = -a^{-2} =  -(1+e^{-y})^{-2}$
+
+$\frac{dp}{dy} = \frac{dp}{da} \cdot \frac{da}{dy} = -(1+e^{-y})^{-2}\cdot(-e^{-y})= e^{-y}(1+e^{-y})^{-2}$
+<br>$\frac{dp}{dy}=\frac{e^{-y}}{(1+e^{-y})^2} = \frac{1}{1+e^{-y}}\cdot \frac{e^{-y}}{1+e^{-y}} = \frac{1}{1+e^{-y}}\cdot \frac{1+e^{-y}-1}{1+e^{-y}}$
+<br>$\frac{dp}{dy}= \frac{1}{1+e^{-y}}\cdot (\frac{1+e^{-y}}{1+e^{-y}} -\frac{1}{1+e^{-y}}) = p(1-p)$
+
+$$p' = p(1-p)$$
+
